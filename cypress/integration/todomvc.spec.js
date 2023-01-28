@@ -8,8 +8,7 @@ describe("todo actions", () => {
   beforeEach(() => {
     todoPage.navigate();
     todoPage.addTodo("Clean Room");
-    cy.request("https://todomvc-app-for-testing.surge.sh/")
-  
+    cy.request("https://todomvc-app-for-testing.surge.sh/");
   });
 
   it("should add a todo", () => {
@@ -20,20 +19,19 @@ describe("todo actions", () => {
   it("should mark todo as completed", () => {
     todoPage.markAsCompleted(0);
   });
-/*
-  it("should clear completed todos", () => {
-    cy.get(".toggle").click();
-    cy.contains("Clear").click();
-    cy.get(".todo-list").should("not.have.descendants", "li");
-  });
-*/
-  it("should remove a todo",()=>{
-    todoPage.removeTodo(0);
-});
 
-it("should clear completed todos",()=>{
-  todoPage.verifyTodoText(0,"Clean Room")
-  todoPage.markAsCompleted(0);
-  todoPage.clearCompleted()
-})
-})
+  it("should re-activate a completed todo", () => {
+    todoPage.markAsCompleted(0);
+    todoPage.reactivateTodo(0);
+  });
+
+  it("should remove a todo", () => {
+    todoPage.removeTodo(0);
+  });
+
+  it("should clear completed todos", () => {
+    todoPage.verifyTodoText(0, "Clean Room");
+    todoPage.markAsCompleted(0);
+    todoPage.clearCompleted();
+  });
+});
