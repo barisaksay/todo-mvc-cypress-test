@@ -8,7 +8,6 @@ describe("todo actions", () => {
   beforeEach(() => {
     todoPage.navigate();
     todoPage.addTodo("Clean Room");
-    cy.request("https://todomvc-app-for-testing.surge.sh/");
   });
 
   it("should add a todo", () => {

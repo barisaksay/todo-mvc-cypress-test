@@ -59,6 +59,16 @@ export class TodoPage {
 
   }
 
+  //change filter
+  selectFilter(filterName){
+    cy.get(".filters li > a").contains(filterName).click()
+  }
+
+  //verify selected filter
+  verifySelectedFilter(filterName){
+    cy.get(".filters a.selected").should("have.text",filterName)
+  }
+
   //API status check
   successResponse() {
     cy.request("https://todomvc-app-for-testing.surge.sh/").as("todo-app");
