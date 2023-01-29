@@ -2,7 +2,7 @@ export class TodoPage {
   
   //navigates to app
   navigate() {
-    cy.visit("https://todomvc-app-for-testing.surge.sh/");
+    cy.visit("/");
   }
 
   //adds a todo with provided parameter as string
