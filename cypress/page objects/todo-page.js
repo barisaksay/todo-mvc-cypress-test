@@ -51,6 +51,14 @@ export class TodoPage {
     );
   }
 
+  //edit a todo by double clicking on it
+  editTodo(todoIndex,newText){
+    cy.get(`ul.todo-list li:nth-child(${todoIndex + 1}) label`).dblclick()
+    cy.get(`ul.todo-list li:nth-child(${todoIndex + 1}).editing`).type("{selectall}{backspace}")
+    cy.get(`ul.todo-list li:nth-child(${todoIndex + 1}).editing`).type(`${newText}{enter}`)
+
+  }
+
   //API status check
   successResponse() {
     cy.request("https://todomvc-app-for-testing.surge.sh/").as("todo-app");

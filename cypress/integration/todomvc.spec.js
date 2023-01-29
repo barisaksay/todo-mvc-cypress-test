@@ -34,4 +34,9 @@ describe("todo actions", () => {
     todoPage.markAsCompleted(0);
     todoPage.clearCompleted();
   });
+
+  it("should edit a todo", () => {
+    todoPage.editTodo(0, "Learn Cypress");
+    todoPage.verifyTodoText(0, "Learn Cypress");
+  });
 });
